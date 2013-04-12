@@ -57,9 +57,13 @@ namespace MvcMovie.Controllers
         //
         // GET: /Movies/Edit/5
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id = 0)
         {
             Movie movie = db.Movies.Find(id);
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
             return View(movie);
         }
 
